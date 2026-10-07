@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Steering Committee — Agentic AI Grand Challenges</title>
+
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet">
+
+
+<style>
+
+/* =========================
+   GLOBAL
+   ========================= */
+
+:root{
+
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --text:#0e1526;
+  --muted:#5c667a;
+  --border:#e6e9f0;
+
+  --navy:#0b1424;
+  --navy2:#111e34;
+
+  --blue:#2454e8;
+  --blue-d:#1a3fbf;
+
+  --orange:#ee7a30;
+  --indigo:#3a4380;
+  --lightblue:#6fb8f0;
+
+  --shadow:
+    0 1px 2px rgba(15,23,42,.04),
+    0 8px 24px rgba(15,23,42,.06);
+
+  --shadow-hover:
+    0 4px 10px rgba(15,23,42,.06),
+    0 16px 36px rgba(15,23,42,.10);
+}
+
+
+*{
+  box-sizing:border-box;
+}
+
+
+body{
+
+  margin:0;
+
+  background:var(--bg);
+
+  color:var(--text);
+
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  line-height:1.6;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(36,84,232,.10) 1px,
+      transparent 1px
+    );
+
+  background-size:26px 26px;
+}
+
+
+h1,
+h2,
+h3{
+
+  font-family:'Manrope',sans-serif;
+
+}
+
+
+.wrap{
+
+  max-width:1140px;
+
+  margin:0 auto;
+
+  padding:0 24px;
+
+}
+
+
+section{
+
+  padding:64px 0;
+
+}
+
+
+/* =========================
+   EYEBROW
+   ========================= */
+
+.eyebrow{
+
+  color:var(--blue);
+
+  font-weight:700;
+
+  font-size:.76rem;
+
+  letter-spacing:.06em;
+
+  text-transform:uppercase;
+
+  margin:0 0 12px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  font-family:'JetBrains Mono',monospace;
+
+}
+
+
+.eyebrow::before{
+
+  content:"//";
+
+  color:var(--blue);
+
+  opacity:.7;
+
+}
+
+
+/* =========================
+   HEADINGS
+   ========================= */
+
+h1{
+
+  font-size:
+    clamp(2rem,4.5vw,3rem);
+
+  font-weight:800;
+
+  margin:0 0 16px;
+
+  letter-spacing:-.02em;
+
+}
+
+
+p.lead{
+
+  font-size:1.08rem;
+
+  color:var(--muted);
+
+  max-width:640px;
+
+  margin:0 0 8px;
+
+}
+
+
+.backlink{
+
+  color:var(--blue);
+
+  text-decoration:none;
+
+  font-size:.88rem;
+
+  font-weight:600;
+
+  display:inline-block;
+
+  margin-bottom:18px;
+
+}
+
+
+/* =========================
+   NAVIGATION
+   ========================= */
+
+header.nav{
+
+  position:sticky;
+
+  top:0;
+
+  z-index:50;
+
+  background:
+    rgba(11,20,36,.92);
+
+  backdrop-filter:blur(10px);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.08);
+
+}
+
+
+.nav-inner{
+
+  max-width:1140px;
+
+  margin:0 auto;
+
+  padding:16px 24px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+}
+
+
+.brand{
+
+  color:#fff;
+
+  font-weight:800;
+
+  font-size:1.02rem;
+
+  text-decoration:none;
+
+  letter-spacing:-.01em;
+
+  white-space:nowrap;
+
+}
+
+
+.brand span{
+
+  color:var(--lightblue);
+
+}
+
+
+nav.links{
+
+  display:flex;
+
+  gap:26px;
+
+  flex-wrap:wrap;
+
+}
+
+
+nav.links a{
+
+  color:#cfd6e6;
+
+  text-decoration:none;
+
+  font-size:.88rem;
+
+  font-weight:600;
+
+}
+
+
+nav.links a:hover{
+
+  color:#fff;
+
+}
+
+
+.nav-cta{
+
+  background:var(--blue);
+
+  color:#fff;
+
+  padding:9px 18px;
+
+  border-radius:7px;
+
+  font-size:.85rem;
+
+  font-weight:700;
+
+  text-decoration:none;
+
+  white-space:nowrap;
+
+}
+
+
+@media (max-width:820px){
+
+  nav.links{
+
+    display:none;
+
+  }
+
+}
+
+
+/* =========================
+   HERO
+   ========================= */
+
+.hero{
+
+  background:
+
+    radial-gradient(
+      circle at 82% 18%,
+      rgba(36,84,232,.30),
+      transparent 55%
+    ),
+
+    linear-gradient(
+      180deg,
+      var(--navy) 0%,
+      var(--navy2) 100%
+    );
+
+  color:#fff;
+
+  padding:56px 0 44px;
+
+}
+
+
+.hero p.lead{
+
+  color:#c3cbe0;
+
+}
+
+
+.hero .backlink{
+
+  color:var(--lightblue);
+
+}
+
+
+/* =========================
+   PLACEHOLDER NOTICE
+   ========================= */
+
+.notice{
+
+  background:
+    rgba(238,122,48,.08);
+
+  border:
+    1px solid rgba(238,122,48,.3);
+
+  border-radius:12px;
+
+  padding:18px 20px;
+
+  font-size:.9rem;
+
+  color:var(--muted);
+
+  margin-bottom:36px;
+
+}
+
+
+.notice strong{
+
+  color:var(--orange);
+
+}
+
+
+/* =========================
+   MEMBER GRID
+   ========================= */
+
+.member-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:24px;
+
+}
+
+
+@media (max-width:900px){
+
+  .member-grid{
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+  }
+
+}
+
+
+@media (max-width:600px){
+
+  .member-grid{
+
+    grid-template-columns:1fr;
+
+  }
+
+}
+
+
+/* =========================
+   MEMBER CARD
+   ========================= */
+
+.member-card{
+
+  background:var(--card);
+
+  border:
+    1px solid var(--border);
+
+  border-radius:14px;
+
+  overflow:hidden;
+
+  box-shadow:var(--shadow);
+
+  transition:
+    box-shadow .2s ease,
+    transform .2s ease;
+
+}
+
+
+.member-card:hover{
+
+  box-shadow:
+    var(--shadow-hover),
+    0 0 0 1px rgba(36,84,232,.3);
+
+  transform:translateY(-2px);
+
+}
+
+
+/* =========================
+   PHOTO AREA
+   ========================= */
+
+.avatar{
+
+  width:100%;
+
+  aspect-ratio:3 / 2;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--indigo)
+    );
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  overflow:hidden;
+
+}
+
+
+/* =========================
+   REAL MEMBER PHOTO
+   ========================= */
+
+.avatar img{
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+  object-position:center;
+
+  display:block;
+
+}
+
+
+/* =========================
+   PLACEHOLDER ICON
+   ========================= */
+
+.avatar svg{
+
+  width:44px;
+
+  height:44px;
+
+  color:
+    rgba(255,255,255,.85);
+
+}
+
+
+/* =========================
+   MEMBER INFORMATION
+   ========================= */
+
+.member-body{
+
+  padding:18px 20px;
+
+  border-left:
+    3px solid var(--blue);
+
+  min-height:115px;
+
+}
+
+
+.member-body h4{
+
+  margin:0 0 4px;
+
+  font-size:1.02rem;
+
+  font-weight:800;
+
+}
+
+
+.member-role{
+
+  color:var(--blue);
+
+  font-weight:600;
+
+  font-size:.88rem;
+
+  margin:0;
+
+}
+
+
+.member-bio{
+
+  color:var(--muted);
+
+  font-size:.86rem;
+
+  margin:0;
+
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer{
+
+  background:var(--navy);
+
+  color:#c9d1e6;
+
+  padding:40px 0;
+
+}
+
+
+.footer-bottom{
+
+  text-align:center;
+
+  font-size:.82rem;
+
+  color:#8b96b3;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+     ========================= -->
+
+<header class="nav">
+
+  <div class="nav-inner">
+
+
+    <a
+      class="brand"
+      href="index.html"
+    >
+
+      Agentic AI
+      <span>Grand Challenges</span>
+
+    </a>
+
+
+    <nav class="links">
+
+      <a href="index.html#why">
+        Why This Programme
+      </a>
+
+      <a href="index.html#challenges">
+        Challenges
+      </a>
+
+      <a href="index.html#outcomes">
+        Outcomes
+      </a>
+
+      <a href="index.html#partners">
+        Partners
+      </a>
+
+      <a href="committees.html">
+        Committees
+      </a>
+
+    </nav>
+
+
+    <a
+      class="nav-cta"
+      href="index.html#interest"
+    >
+
+      Express Interest
+
+    </a>
+
+  </div>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+     ========================= -->
+
+<section class="hero">
+
+  <div class="wrap">
+
+
+    <a
+      class="backlink"
+      href="committees.html"
+    >
+
+      ← All Committees
+
+    </a>
+
+
+    <p
+      class="eyebrow"
+      style="color:var(--lightblue)"
+    >
+
+      Governance
+
+    </p>
+
+
+    <h1>
+
+      Steering Committee
+
+    </h1>
+
+
+    <p class="lead">
+
+      Provides overall strategic direction for the programme,
+      sets priorities, and oversees the relationship with
+      partners and sponsors.
+
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     COMMITTEE MEMBERS
+     ========================= -->
+
+<section>
+
+  <div class="wrap">
+
+
+    <div class="member-grid">
+
+
+      <!-- =========================
+           MEMBER 1
+           ========================= -->
+
+      <div class="member-card">
+
+        <div class="avatar">
+
+          <img
+            src="assets/Nicolas_3x2.png"
+            alt="Nicolas Rebirre"
+          >
+
+        </div>
+
+        <div class="member-body">
+
+          <h4>
+            Nicolas Rebirre
+          </h4>
+
+          <p class="member-role">
+            European Trustworthy AI Association
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =========================
+           MEMBER 2
+           ========================= -->
+
+      <div class="member-card">
+
+        <div class="avatar">
+
+          <img
+            src="assets/Atlas_3x2.png"
+            alt="Atlas Wang"
+          >
+
+        </div>
+
+        <div class="member-body">
+
+          <h4>
+            Atlas Wang
+          </h4>
+
+          <p class="member-role">
+            Ph.D, UT Austin
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =========================
+           MEMBER 3
+           ========================= -->
+
+      <div class="member-card">
+
+        <div class="avatar">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+
+            <circle
+              cx="12"
+              cy="8"
+              r="4"
+            />
+
+            <path
+              d="M4 20c0-4 3.5-7 8-7s8 3 8 7"
+            />
+
+          </svg>
+
+        </div>
+
+        <div class="member-body">
+
+          <h4>
+            Member Name 3
+          </h4>
+
+          <p class="member-role">
+            Role / Title — TBC
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =========================
+           MEMBER 4
+           ========================= -->
+
+      <div class="member-card">
+
+        <div class="avatar">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+
+            <circle
+              cx="12"
+              cy="8"
+              r="4"
+            />
+
+            <path
+              d="M4 20c0-4 3.5-7 8-7s8 3 8 7"
+            />
+
+          </svg>
+
+        </div>
+
+        <div class="member-body">
+
+          <h4>
+            Member Name 4
+          </h4>
+
+          <p class="member-role">
+            Role / Title — TBC
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =========================
+           MEMBER 5
+           ========================= -->
+
+      <div class="member-card">
+
+        <div class="avatar">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+
+            <circle
+              cx="12"
+              cy="8"
+              r="4"
+            />
+
+            <path
+              d="M4 20c0-4 3.5-7 8-7s8 3 8 7"
+            />
+
+          </svg>
+
+        </div>
+
+        <div class="member-body">
+
+          <h4>
+            Member Name 5
+          </h4>
+
+          <p class="member-role">
+            Role / Title — TBC
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =========================
+           MEMBER 6
+           ========================= -->
+
+      <div class="member-card">
+
+        <div class="avatar">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+
+            <circle
+              cx="12"
+              cy="8"
+              r="4"
+            />
+
+            <path
+              d="M4 20c0-4 3.5-7 8-7s8 3 8 7"
+            />
+
+          </svg>
+
+        </div>
+
+        <div class="member-body">
+
+          <h4>
+            Member Name 6
+          </h4>
+
+          <p class="member-role">
+            Role / Title — TBC
+          </p>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+     ========================= -->
+
+<footer>
+
+  <div class="wrap">
+
+    <div class="footer-bottom">
+
+      Agentic AI Grand Challenges —
+      University of Southampton.
+      Programme details subject to confirmation.
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+</body>
+
+</html>
