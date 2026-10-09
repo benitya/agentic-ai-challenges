@@ -1,1038 +1,928 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-<title>Challenge Committee — Agentic AI Grand Challenges</title>
-
-
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap"
-      rel="stylesheet">
-
-
-<style>
-
-/* =========================
-   GLOBAL
-   ========================= */
-
-:root{
-
-  --bg:#f6f7fb;
-  --card:#ffffff;
-  --text:#0e1526;
-  --muted:#5c667a;
-  --border:#e6e9f0;
-
-  --navy:#0b1424;
-  --navy2:#111e34;
-
-  --blue:#2454e8;
-  --blue-d:#1a3fbf;
-
-  --orange:#ee7a30;
-  --indigo:#3a4380;
-  --lightblue:#6fb8f0;
-
-  --shadow:
-    0 1px 2px rgba(15,23,42,.04),
-    0 8px 24px rgba(15,23,42,.06);
-
-  --shadow-hover:
-    0 4px 10px rgba(15,23,42,.06),
-    0 16px 36px rgba(15,23,42,.10);
-}
-
-
-*{
-  box-sizing:border-box;
-}
-
-
-body{
-
-  margin:0;
-
-  background:var(--bg);
-
-  color:var(--text);
-
-  font-family:
-    'Inter',
-    -apple-system,
-    BlinkMacSystemFont,
-    sans-serif;
-
-  line-height:1.6;
-
-  background-image:
-    radial-gradient(
-      circle,
-      rgba(36,84,232,.10) 1px,
-      transparent 1px
-    );
-
-  background-size:26px 26px;
-}
-
-
-h1,
-h2,
-h3{
-
-  font-family:'Manrope',sans-serif;
-
-}
-
-
-.wrap{
-
-  max-width:1140px;
-
-  margin:0 auto;
-
-  padding:0 24px;
-
-}
-
-
-section{
-
-  padding:64px 0;
-
-}
-
-
-/* =========================
-   EYEBROW
-   ========================= */
-
-.eyebrow{
-
-  color:var(--blue);
-
-  font-weight:700;
-
-  font-size:.76rem;
-
-  letter-spacing:.06em;
-
-  text-transform:uppercase;
-
-  margin:0 0 12px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:8px;
-
-  font-family:'JetBrains Mono',monospace;
-
-}
-
-
-.eyebrow::before{
-
-  content:"//";
-
-  color:var(--blue);
-
-  opacity:.7;
-
-}
-
-
-/* =========================
-   HEADINGS
-   ========================= */
-
-h1{
-
-  font-size:
-    clamp(2rem,4.5vw,3rem);
-
-  font-weight:800;
-
-  margin:0 0 16px;
-
-  letter-spacing:-.02em;
-
-}
-
-
-p.lead{
-
-  font-size:1.08rem;
-
-  color:var(--muted);
-
-  max-width:640px;
-
-  margin:0 0 8px;
-
-}
-
-
-.backlink{
-
-  color:var(--blue);
-
-  text-decoration:none;
-
-  font-size:.88rem;
-
-  font-weight:600;
-
-  display:inline-block;
-
-  margin-bottom:18px;
-
-}
-
-
-/* =========================
-   NAVIGATION
-   ========================= */
-
-header.nav{
-
-  position:sticky;
-
-  top:0;
-
-  z-index:50;
-
-  background:
-    rgba(11,20,36,.92);
-
-  backdrop-filter:blur(10px);
-
-  border-bottom:
-    1px solid rgba(255,255,255,.08);
-
-}
-
-
-.nav-inner{
-
-  max-width:1140px;
-
-  margin:0 auto;
-
-  padding:16px 24px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  gap:20px;
-
-}
-
-
-.brand{
-
-  color:#fff;
-
-  font-weight:800;
-
-  font-size:1.02rem;
-
-  text-decoration:none;
-
-  letter-spacing:-.01em;
-
-  white-space:nowrap;
-
-}
-
-
-.brand span{
-
-  color:var(--lightblue);
-
-}
-
-
-nav.links{
-
-  display:flex;
-
-  gap:26px;
-
-  flex-wrap:wrap;
-
-}
-
-
-nav.links a{
-
-  color:#cfd6e6;
-
-  text-decoration:none;
-
-  font-size:.88rem;
-
-  font-weight:600;
-
-}
-
-
-nav.links a:hover{
-
-  color:#fff;
-
-}
-
-
-.nav-cta{
-
-  background:var(--blue);
-
-  color:#fff;
-
-  padding:9px 18px;
-
-  border-radius:7px;
-
-  font-size:.85rem;
-
-  font-weight:700;
-
-  text-decoration:none;
-
-  white-space:nowrap;
-
-}
-
-
-@media (max-width:820px){
-
-  nav.links{
-
-    display:none;
-
-  }
-
-}
-
-
-/* =========================
-   HERO
-   ========================= */
-
-.hero{
-
-  background:
-
-    radial-gradient(
-      circle at 82% 18%,
-      rgba(36,84,232,.30),
-      transparent 55%
-    ),
-
-    linear-gradient(
-      180deg,
-      var(--navy) 0%,
-      var(--navy2) 100%
-    );
-
-  color:#fff;
-
-  padding:56px 0 44px;
-
-}
-
-
-.hero p.lead{
-
-  color:#c3cbe0;
-
-}
-
-
-.hero .backlink{
-
-  color:var(--lightblue);
-
-}
-
-
-/* =========================
-   PLACEHOLDER NOTICE
-   ========================= */
-
-.notice{
-
-  background:
-    rgba(238,122,48,.08);
-
-  border:
-    1px solid rgba(238,122,48,.3);
-
-  border-radius:12px;
-
-  padding:18px 20px;
-
-  font-size:.9rem;
-
-  color:var(--muted);
-
-  margin-bottom:36px;
-
-}
-
-
-.notice strong{
-
-  color:var(--orange);
-
-}
-
-
-/* =========================
-   MEMBER GRID
-   ========================= */
-
-.member-grid{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:24px;
-
-}
-
-
-@media (max-width:900px){
-
-  .member-grid{
-
-    grid-template-columns:
-      repeat(2,1fr);
-
-  }
-
-}
-
-
-@media (max-width:600px){
-
-  .member-grid{
-
-    grid-template-columns:1fr;
-
-  }
-
-}
-
-
-/* =========================
-   MEMBER CARD
-   ========================= */
-
-.member-card{
-
-  background:var(--card);
-
-  border:
-    1px solid var(--border);
-
-  border-radius:14px;
-
-  overflow:hidden;
-
-  box-shadow:var(--shadow);
-
-  transition:
-    box-shadow .2s ease,
-    transform .2s ease;
-
-}
-
-
-.member-card:hover{
-
-  box-shadow:
-    var(--shadow-hover),
-    0 0 0 1px rgba(36,84,232,.3);
-
-  transform:translateY(-2px);
-
-}
-
-
-/* =========================
-   PHOTO AREA
-   ========================= */
-
-.avatar{
-
-  width:100%;
-
-  aspect-ratio:3 / 2;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--blue),
-      var(--indigo)
-    );
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  overflow:hidden;
-
-}
-
-
-/* =========================
-   REAL MEMBER PHOTO
-   ========================= */
-
-.avatar img{
-
-  width:100%;
-
-  height:100%;
-
-  object-fit:cover;
-
-  object-position:center;
-
-  display:block;
-
-}
-
-
-/* =========================
-   PLACEHOLDER ICON
-   ========================= */
-
-.avatar svg{
-
-  width:44px;
-
-  height:44px;
-
-  color:
-    rgba(255,255,255,.85);
-
-}
-
-
-/* =========================
-   MEMBER INFORMATION
-   ========================= */
-
-.member-body{
-
-  padding:18px 20px;
-
-  border-left:
-    3px solid var(--blue);
-
-  min-height:115px;
-
-}
-
-
-.member-body h4{
-
-  margin:0 0 4px;
-
-  font-size:1.02rem;
-
-  font-weight:800;
-
-}
-
-
-.member-role{
-
-  color:var(--blue);
-
-  font-weight:600;
-
-  font-size:.88rem;
-
-  margin:0;
-
-}
-
-
-.member-bio{
-
-  color:var(--muted);
-
-  font-size:.86rem;
-
-  margin:0;
-
-}
-
-
-/* =========================
-   FOOTER
-   ========================= */
-
-footer{
-
-  background:var(--navy);
-
-  color:#c9d1e6;
-
-  padding:40px 0;
-
-}
-
-
-.footer-bottom{
-
-  text-align:center;
-
-  font-size:.82rem;
-
-  color:#8b96b3;
-
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Challenge Committee — Agentic AI Grand Challenges</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+       GLOBAL
+       ========================= */
+
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #0e1526;
+      --muted: #5c667a;
+      --border: #e6e9f0;
+
+      --navy: #0b1424;
+      --navy2: #111e34;
+
+      --blue: #2454e8;
+      --blue-d: #1a3fbf;
+
+      --orange: #ee7a30;
+      --indigo: #3a4380;
+      --lightblue: #6fb8f0;
+
+      --shadow:
+        0 1px 2px rgba(15,23,42,.04),
+        0 8px 24px rgba(15,23,42,.06);
+
+      --shadow-hover:
+        0 4px 10px rgba(15,23,42,.06),
+        0 16px 36px rgba(15,23,42,.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+
+      background-image:
+        radial-gradient(
+          circle,
+          rgba(36,84,232,.10) 1px,
+          transparent 1px
+        );
+
+      background-size: 26px 26px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Manrope', sans-serif;
+    }
+
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 48px 0;
+    }
+
+
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    header.nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+
+      background: rgba(11,20,36,.95);
+      backdrop-filter: blur(10px);
+
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 16px 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.02rem;
+      text-decoration: none;
+      letter-spacing: -.01em;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--lightblue);
+    }
+
+    nav.links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    nav.links a {
+      color: #cfd6e6;
+      text-decoration: none;
+      font-size: .88rem;
+      font-weight: 600;
+    }
+
+    nav.links a:hover {
+      color: #fff;
+    }
+
+    .nav-cta {
+      background: var(--blue);
+      color: #fff;
+
+      padding: 9px 18px;
+      border-radius: 7px;
+
+      font-size: .85rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      background: var(--blue-d);
+    }
+
+
+    /* =========================
+       HERO
+       ========================= */
+
+    .hero {
+      background:
+        radial-gradient(
+          circle at 82% 18%,
+          rgba(36,84,232,.30),
+          transparent 55%
+        ),
+        linear-gradient(
+          180deg,
+          var(--navy) 0%,
+          var(--navy2) 100%
+        );
+
+      color: #fff;
+      padding: 56px 0 44px;
+    }
+
+    .eyebrow {
+      color: var(--lightblue);
+      font-weight: 700;
+      font-size: .76rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 800;
+      margin: 0 0 16px;
+      letter-spacing: -.02em;
+    }
+
+    .hero p.lead {
+      font-size: 1.08rem;
+      color: #c3cbe0;
+      max-width: 760px;
+      margin: 0;
+    }
+
+    .backlink {
+      color: var(--lightblue);
+      text-decoration: none;
+      font-size: .88rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+
+    .backlink:hover {
+      color: #fff;
+    }
+
+
+    /* =========================
+       CHALLENGE JUMP BUTTONS
+       ========================= */
+
+    .jump-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .jump-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      padding: 12px 18px;
+
+      border: 1px solid var(--border);
+      border-radius: 10px;
+
+      background: var(--card);
+      color: var(--text);
+
+      font-weight: 700;
+      text-decoration: none;
+
+      box-shadow: var(--shadow);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+    }
+
+    .jump-button:hover {
+      transform: translateY(-2px);
+      border-color: var(--blue);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .jump-number {
+      color: var(--blue);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .8rem;
+    }
+
+
+    /* =========================
+       CHALLENGE SECTIONS
+       ========================= */
+
+    .challenge-section {
+      background: rgba(255,255,255,.88);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+
+      padding: 34px;
+      margin-bottom: 30px;
+
+      box-shadow: var(--shadow);
+      scroll-margin-top: 100px;
+    }
+
+    .challenge-heading {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .challenge-number {
+      flex: 0 0 58px;
+      height: 58px;
+
+      border-radius: 16px;
+
+      background: linear-gradient(
+        135deg,
+        var(--blue),
+        var(--indigo)
+      );
+
+      color: #fff;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .challenge-heading-content {
+      min-width: 0;
+    }
+
+    .challenge-title {
+      margin: 0 0 8px;
+      font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+      line-height: 1.35;
+    }
+
+    .challenge-title a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .challenge-title a:hover {
+      color: var(--blue);
+    }
+
+    .challenge-description {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 1000px;
+    }
+
+
+    /* =========================
+       MEMBER GRID
+       ========================= */
+
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+
+    /* =========================
+       MEMBER CARD
+       ========================= */
+
+    .member-card {
+      min-width: 0;
+
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      overflow: hidden;
+      box-shadow: var(--shadow);
+
+      transition:
+        box-shadow .2s ease,
+        transform .2s ease;
+    }
+
+    .member-card:hover {
+      box-shadow:
+        var(--shadow-hover),
+        0 0 0 1px rgba(36,84,232,.2);
+
+      transform: translateY(-2px);
+    }
+
+
+    /* =========================
+       LARGER PHOTO AREA
+       ========================= */
+
+    .avatar {
+      width: 100%;
+      height: 280px;
+
+      background: linear-gradient(
+        135deg,
+        #e7edff,
+        #dce7f8
+      );
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center 30%;
+
+      display: block;
+    }
+
+    .avatar svg {
+      width: 56px;
+      height: 56px;
+      color: #5b80f7;
+    }
+
+
+    /* =========================
+       MEMBER INFORMATION
+       ========================= */
+
+    .member-body {
+      padding: 18px 21px 20px;
+      border-left: 3px solid var(--blue);
+      min-height: 112px;
+    }
+
+    .member-body h4 {
+      margin: 0 0 5px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+
+    .member-role {
+      color: var(--blue);
+      font-weight: 700;
+      font-size: .9rem;
+      margin: 0;
+    }
+
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+      background: var(--navy);
+      color: #c9d1e6;
+      padding: 40px 0;
+      margin-top: 20px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: .82rem;
+      color: #8b96b3;
+    }
+
+
+    /* =========================
+       TABLET
+       ========================= */
+
+    @media (max-width: 900px) {
+      nav.links {
+        display: none;
+      }
+
+      .member-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .challenge-section {
+        padding: 26px;
+      }
+
+      .avatar {
+        height: 240px;
+      }
+    }
+
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 600px) {
+      .wrap {
+        padding: 0 15px;
+      }
+
+      .nav-inner {
+        padding: 14px 15px;
+      }
+
+      .brand {
+        white-space: normal;
+        font-size: .9rem;
+      }
+
+      .nav-cta {
+        padding: 8px 10px;
+        font-size: .76rem;
+      }
+
+      .hero {
+        padding: 40px 0 34px;
+      }
+
+      section {
+        padding: 32px 0;
+      }
+
+      .challenge-section {
+        padding: 20px 15px;
+        border-radius: 18px;
+      }
+
+      .challenge-heading {
+        gap: 12px;
+        margin-bottom: 22px;
+      }
+
+      .challenge-number {
+        flex-basis: 46px;
+        height: 46px;
+        border-radius: 12px;
+        font-size: .95rem;
+      }
+
+      .member-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .avatar {
+        height: 300px;
+      }
+
+      .jump-nav {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .jump-button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
+  <!-- =========================
+       NAVIGATION
+       ========================= -->
 
-<!-- =========================
-     NAVIGATION
-     ========================= -->
+  <header class="nav">
+    <div class="nav-inner">
 
-<header class="nav">
-
-  <div class="nav-inner">
-
-
-    <a
-      class="brand"
-      href="index.html"
-    >
-
-      Agentic AI
-      <span>Grand Challenges</span>
-
-    </a>
-
-
-    <nav class="links">
-
-      <a href="index.html#why">
-        Why This Programme
+      <a class="brand" href="index.html">
+        Agentic AI <span>Grand Challenges</span>
       </a>
 
-      <a href="index.html#challenges">
-        Challenges
+      <nav class="links">
+        <a href="index.html#why">Why This Programme</a>
+        <a href="index.html#challenges">Challenges</a>
+        <a href="index.html#outcomes">Outcomes</a>
+        <a href="index.html#partners">Partners</a>
+        <a href="committees.html">Committees</a>
+      </nav>
+
+      <a class="nav-cta" href="index.html#interest">
+        Express Interest
       </a>
-
-      <a href="index.html#outcomes">
-        Outcomes
-      </a>
-
-      <a href="index.html#partners">
-        Partners
-      </a>
-
-      <a href="committees.html">
-        Committees
-      </a>
-
-    </nav>
-
-
-    <a
-      class="nav-cta"
-      href="index.html#interest"
-    >
-
-      Express Interest
-
-    </a>
-
-  </div>
-
-</header>
-
-
-
-<!-- =========================
-     HERO
-     ========================= -->
-
-<section class="hero">
-
-  <div class="wrap">
-
-
-    <a
-      class="backlink"
-      href="committees.html"
-    >
-
-      ← All Committees
-
-    </a>
-
-
-    <p
-      class="eyebrow"
-      style="color:var(--lightblue)"
-    >
-
-      Governance
-
-    </p>
-
-
-    <h1>
-
-      Challenge Committee
-
-    </h1>
-
-
-    <p class="lead">
-
-      Develops the challenges into specific tasks for participants,
-      defines evaluation methods, and selects Challenge Leads.
-
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     COMMITTEE MEMBERS
-     ========================= -->
-
-<section>
-
-  <div class="wrap">
-
-
-    <div class="member-grid">
-
-
-      <!-- =========================
-           MEMBER 1
-           ========================= -->
-
-      <div class="member-card">
-
-        <div class="avatar">
-
-          <img
-            src="assets/Bertrand_Braunschweig.png"
-            alt="Bertrand Braunschweig"
-          >
-
-        </div>
-
-
-        <div class="member-body">
-
-          <h4>
-            Bertrand Braunschweig
-          </h4>
-
-          <p class="member-role">
-            Scientific coordinator, European Trustworthy AI Association
-          </p>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- =========================
-           MEMBER 2
-           ========================= -->
-
-      <div class="member-card">
-
-        <div class="avatar">
-
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-          >
-
-            <circle
-              cx="12"
-              cy="8"
-              r="4"
-            />
-
-            <path
-              d="M4 20c0-4 3.5-7 8-7s8 3 8 7"
-            />
-
-          </svg>
-
-        </div>
-
-
-        <div class="member-body">
-
-          <h4>
-            Member Name 2
-          </h4>
-
-          <p class="member-role">
-            Role / Title — TBC
-          </p>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- =========================
-           MEMBER 3
-           ========================= -->
-
-      <div class="member-card">
-
-        <div class="avatar">
-
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-          >
-
-            <circle
-              cx="12"
-              cy="8"
-              r="4"
-            />
-
-            <path
-              d="M4 20c0-4 3.5-7 8-7s8 3 8 7"
-            />
-
-          </svg>
-
-        </div>
-
-
-        <div class="member-body">
-
-          <h4>
-            Member Name 3
-          </h4>
-
-          <p class="member-role">
-            Role / Title — TBC
-          </p>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- =========================
-           MEMBER 4
-           ========================= -->
-
-      <div class="member-card">
-
-        <div class="avatar">
-
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-          >
-
-            <circle
-              cx="12"
-              cy="8"
-              r="4"
-            />
-
-            <path
-              d="M4 20c0-4 3.5-7 8-7s8 3 8 7"
-            />
-
-          </svg>
-
-        </div>
-
-
-        <div class="member-body">
-
-          <h4>
-            Member Name 4
-          </h4>
-
-          <p class="member-role">
-            Role / Title — TBC
-          </p>
-
-        </div>
-
-      </div>
-
-<!-- =========================
-           MEMBER 5
-           ========================= -->
-
-      <div class="member-card">
-
-        <div class="avatar">
-
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-          >
-
-            <circle
-              cx="12"
-              cy="8"
-              r="4"
-            />
-
-            <path
-              d="M4 20c0-4 3.5-7 8-7s8 3 8 7"
-            />
-
-          </svg>
-
-        </div>
-
-
-        <div class="member-body">
-
-          <h4>
-            Member Name 4
-          </h4>
-
-          <p class="member-role">
-            Role / Title — TBC
-          </p>
-
-        </div>
-
-      </div>
-
-      <!-- =========================
-           MEMBER 6
-           ========================= -->
-
-      <div class="member-card">
-
-        <div class="avatar">
-
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-          >
-
-            <circle
-              cx="12"
-              cy="8"
-              r="4"
-            />
-
-            <path
-              d="M4 20c0-4 3.5-7 8-7s8 3 8 7"
-            />
-
-          </svg>
-
-        </div>
-
-
-        <div class="member-body">
-
-          <h4>
-            Member Name 5
-          </h4>
-
-          <p class="member-role">
-            Role / Title — TBC
-          </p>
-
-        </div>
-
-      </div>
-
 
     </div>
-
-  </div>
-
-</section>
+  </header>
 
 
+  <!-- =========================
+       HERO
+       ========================= -->
 
-<!-- =========================
-     FOOTER
-     ========================= -->
+  <section class="hero">
+    <div class="wrap">
 
-<footer>
+      <a class="backlink" href="committees.html">
+        ← All Committees
+      </a>
 
-  <div class="wrap">
+      <p class="eyebrow">Governance</p>
 
-    <div class="footer-bottom">
+      <h1>Challenge Committee</h1>
 
-      Agentic AI Grand Challenges —
-      University of Southampton.
-      Programme details subject to confirmation.
+      <p class="lead">
+        Meet the people helping shape the Agentic AI Grand Challenges,
+        develop the individual challenges and guide their evaluation.
+      </p>
 
     </div>
+  </section>
 
-  </div>
 
-</footer>
+  <!-- =========================
+       CHALLENGE COMMITTEES
+       ========================= -->
 
+  <section>
+    <div class="wrap">
+
+      <!-- TOP-LEVEL JUMP BUTTONS -->
+
+      <nav class="jump-nav" aria-label="Jump to a challenge committee">
+
+        <a class="jump-button" href="#challenge-1">
+          <span class="jump-number">01</span>
+          Human Flourishing
+        </a>
+
+        <a class="jump-button" href="#challenge-2">
+          <span class="jump-number">02</span>
+          Frugal AI
+        </a>
+
+        <a class="jump-button" href="#challenge-3">
+          <span class="jump-number">03</span>
+          Accountability
+        </a>
+
+      </nav>
+
+
+      <!-- =========================
+           CHALLENGE 1
+           HUMAN FLOURISHING
+           ========================= -->
+
+      <section class="challenge-section" id="challenge-1">
+
+        <div class="challenge-heading">
+
+          <div class="challenge-number">01</div>
+
+          <div class="challenge-heading-content">
+
+            <h2 class="challenge-title">
+              <a href="challenge_1.html">
+                Challenge 1 – Human Flourishing ↗
+              </a>
+            </h2>
+
+            <p class="challenge-description">
+              This challenge explores how AI agents can work effectively
+              alongside people. Evaluation considers both task performance
+              and the human experience, including satisfaction and workload.
+            </p>
+
+          </div>
+        </div>
+
+
+        <div class="member-grid">
+
+          <article class="member-card">
+            <div class="avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M3 21c0-5 4-8 9-8s9 3 9 8"/>
+              </svg>
+            </div>
+
+            <div class="member-body">
+              <h4>Ramayya Krishnan</h4>
+              <p class="member-role">Challenge Chair</p>
+            </div>
+          </article>
+
+
+          <article class="member-card">
+            <div class="avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M3 21c0-5 4-8 9-8s9 3 9 8"/>
+              </svg>
+            </div>
+
+            <div class="member-body">
+              <h4>Rema Padman</h4>
+              <p class="member-role">Challenge Chair</p>
+            </div>
+          </article>
+
+
+          <article class="member-card">
+            <div class="avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M3 21c0-5 4-8 9-8s9 3 9 8"/>
+              </svg>
+            </div>
+
+            <div class="member-body">
+              <h4>Zlatko</h4>
+              <p class="member-role">Challenge Lead</p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+
+      <!-- =========================
+           CHALLENGE 2
+           FRUGAL AI
+           ========================= -->
+
+      <section class="challenge-section" id="challenge-2">
+
+        <div class="challenge-heading">
+
+          <div class="challenge-number">02</div>
+
+          <div class="challenge-heading-content">
+
+            <h2 class="challenge-title">
+              <a href="challenge_2.html">
+                Challenge 2 – Frugal AI ↗
+              </a>
+            </h2>
+
+            <p class="challenge-description">
+              This challenge investigates how cooperating agents can solve
+              tasks using constrained, low-power computing resources. It
+              considers the trade-offs between answer quality, energy use
+              and inter-agent communication.
+            </p>
+
+          </div>
+        </div>
+
+
+        <div class="member-grid">
+
+          <article class="member-card">
+            <div class="avatar">
+              <img src="assets/GopalRamchurn-CEO.png"
+                   alt="Dr Gopal Ramchurn">
+            </div>
+
+            <div class="member-body">
+              <h4>Dr Gopal Ramchurn</h4>
+              <p class="member-role">Challenge Chair</p>
+              <p class="member-role">Chief Executive Officer, Responsible AI UK</p>
+            </div>
+          </article>
+
+
+          <article class="member-card">
+            <div class="avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M3 21c0-5 4-8 9-8s9 3 9 8"/>
+              </svg>
+            </div>
+
+            <div class="member-body">
+              <h4>Kai Wang</h4>
+              <p class="member-role">Challenge Chair</p>
+            </div>
+          </article>
+
+
+          <article class="member-card">
+            <div class="avatar">
+              <img src="assets/Atlas_3x2.png"
+                   alt="Atlas">
+            </div>
+
+            <div class="member-body">
+              <h4>Atlas Wang</h4>
+              <p class="member-role">Challenge Chair</p>
+              <p class="member-role">Ph.D., UT Austin</p>
+            </div>
+          </article>
+
+
+          <article class="member-card">
+            <div class="avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M3 21c0-5 4-8 9-8s9 3 9 8"/>
+              </svg>
+            </div>
+
+            <div class="member-body">
+              <h4>Yann Gaste</h4>
+              <p class="member-role">Challenge Chair</p>
+            </div>
+          </article>
+
+
+         <article class="member-card">
+            <div class="avatar">
+              <img src="assets/ageorgara_profile_pic.png"
+                   alt="Athina">
+            </div>
+
+            <div class="member-body">
+              <h4>Athina</h4>
+              <p class="member-role">Challenge Lead</p>
+              <p class="member-role">Ph.D., University of Southampton</p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+
+      <!-- =========================
+           CHALLENGE 3
+           ACCOUNTABILITY
+           ========================= -->
+
+      <section class="challenge-section" id="challenge-3">
+
+        <div class="challenge-heading">
+
+          <div class="challenge-number">03</div>
+
+          <div class="challenge-heading-content">
+
+            <h2 class="challenge-title">
+              <a href="challenge_3.html">
+                Challenge 3 – Accountability ↗
+              </a>
+            </h2>
+
+            <p class="challenge-description">
+              This challenge explores how outcomes in complex human-agent
+              systems can be traced and explained, helping establish who
+              contributed to an outcome and who is responsible for errors.
+            </p>
+
+          </div>
+        </div>
+
+
+        <div class="member-grid">
+
+          <article class="member-card">
+            <div class="avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M3 21c0-5 4-8 9-8s9 3 9 8"/>
+              </svg>
+            </div>
+
+            <div class="member-body">
+              <h4>Maria Liakata</h4>
+              <p class="member-role">Challenge Chair</p>
+            </div>
+          </article>
+
+
+          <article class="member-card">
+            <div class="avatar">
+              <img src="assets/Bertrand_Braunschweig.png"
+                   alt="Bertrand Braunschweig">
+            </div>
+
+            <div class="member-body">
+              <h4>Bertrand Braunschweig</h4>
+              <p class="member-role">Challenge Chair</p>
+                <p class="member-role">Scientific coordinator, European Trustworthy AI Association</p>
+            </div>
+          </article>
+
+
+          <article class="member-card">
+            <div class="avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M3 21c0-5 4-8 9-8s9 3 9 8"/>
+              </svg>
+            </div>
+
+            <div class="member-body">
+              <h4>Guneet Singh Kohli</h4>
+              <p class="member-role">Challenge Lead</p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+       ========================= -->
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-bottom">
+        Agentic AI Grand Challenges — University of Southampton.
+        Programme details subject to confirmation.
+      </div>
+    </div>
+  </footer>
 
 </body>
-
 </html>
+
