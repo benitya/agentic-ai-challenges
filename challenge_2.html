@@ -1,37 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Challenge 02 — Frugal Agentic AI | Agentic AI Grand Challenges</title>
-<meta name="description" content="Explore the Frugal Agentic AI Challenge: cooperating agents on a resource-constrained, five-node platform.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Challenge 02 | Frugal Agentic AI</title>
 <style>
-:root{--navy:#07162a;--navy2:#102644;--ink:#102c52;--blue:#2463eb;--cyan:#12b9e8;--orange:#ff7a22;--muted:#58708f;--line:#dce7f4;--paper:#f4f8fc;--white:#fff;--shadow:0 10px 32px rgba(15,43,78,.07)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;line-height:1.55}h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,sans-serif;letter-spacing:-.025em}a{color:inherit}.container{width:min(1240px,calc(100% - 48px));margin:auto}
-.site-header{height:68px;background:#0b192d;border-bottom:1px solid rgba(255,255,255,.12);position:sticky;top:0;z-index:20}.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{color:#fff;text-decoration:none;font-family:Manrope,sans-serif;font-weight:800;font-size:1.08rem;white-space:nowrap}.brand span{color:#67c9ff}.nav-links{display:flex;align-items:center;gap:27px}.nav-links a{font-size:.88rem;text-decoration:none;color:#d1dbea;font-weight:600}.nav-links a:hover{color:#fff}.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:8px;padding:11px 17px;font-weight:700;font-size:.88rem;text-decoration:none;transition:transform .2s,background .2s}.nav-cta{background:#245bf0;color:#fff;box-shadow:0 5px 16px #245bf044}.nav-cta:hover,.btn:hover{transform:translateY(-2px)}.menu-toggle{display:none;background:none;color:white;border:1px solid #506078;border-radius:8px;padding:8px 11px}
-.hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 90% 20%,rgba(255,104,35,.35),transparent 31%),radial-gradient(ellipse at 58% 110%,rgba(23,92,180,.28),transparent 42%),linear-gradient(112deg,#071426 0%,#0c203c 65%,#182338 100%);color:#fff;padding:76px 0 64px}.hero:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.15;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(90deg,transparent 20%,black 100%)}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:34px}.pill{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(100deg,#ff8b35,#f2641e);padding:8px 14px;border-radius:999px;color:#fff;font-size:.76rem;font-weight:800;letter-spacing:.04em}.eyebrow{margin:17px 0 12px;text-transform:uppercase;letter-spacing:.12em;color:#ff9b5d;font-size:.77rem;font-weight:800}.eyebrow:before{content:"";display:inline-block;width:23px;height:2px;background:currentColor;vertical-align:middle;margin-right:9px}.hero h1{font-size:clamp(2.7rem,4.5vw,4.35rem);line-height:1.06;max-width:690px;margin:0 0 18px;color:#fff}.lead{max-width:650px;color:#d4e0f1;font-size:1.08rem;line-height:1.7;margin-bottom:24px}.draft-chip{display:inline-flex;align-items:center;gap:10px;padding:9px 14px;border:1px solid #40516a;background:rgba(8,21,39,.45);border-radius:10px;color:#e1eaf7;font-size:.83rem}.draft-chip b{color:#ffae70}.draft-dot{width:8px;height:8px;border-radius:50%;background:#ff8b35;box-shadow:0 0 12px #ff8b35}
-.network{width:100%;max-width:550px;justify-self:end;filter:drop-shadow(0 12px 30px rgba(0,0,0,.15))}.network svg{width:100%;height:auto;display:block}.hero-bottom{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#5c83b8,transparent)}
-main{padding:24px 0 28px}.intro-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:16px}.panel{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}.intro-card{padding:27px 28px;display:grid;grid-template-columns:44px 1fr;gap:17px}.icon-bubble{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#e8f1ff;color:#2463eb;font-size:1.35rem}.panel h2{font-size:1.3rem;line-height:1.25;margin-bottom:10px}.panel p{color:#536d8c;font-size:.92rem;margin-bottom:10px}.panel p:last-child{margin-bottom:0}.note{margin-top:15px;background:#edf5ff;border:1px solid #d8eaff;color:#315c8e;border-radius:8px;padding:10px 12px;font-size:.8rem;display:flex;gap:10px;align-items:flex-start}.note strong{color:#174b91}.central-card{padding:28px 30px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 95% 10%,rgba(255,112,40,.3),transparent 45%),linear-gradient(115deg,#0b1d35,#132a49);color:white;min-height:100%}.central-card:after{content:"";position:absolute;width:330px;height:200px;right:-40px;bottom:-95px;border-radius:50%;border:1px dotted #ff8b35;box-shadow:0 0 0 12px rgba(255,139,53,.04),0 0 0 28px rgba(255,139,53,.04),0 0 0 44px rgba(255,139,53,.04)}.central-inner{position:relative;z-index:1;display:grid;grid-template-columns:42px 1fr;gap:17px}.central-card .icon-bubble{background:transparent;color:#ff8b35;font-size:2rem}.central-card h2{font-size:1.45rem}.central-card p{color:#d7e4f5;font-size:1rem;max-width:450px}
-.section{padding-top:35px}.section-heading{margin-bottom:16px}.section-heading .eyebrow{margin:0 0 7px;font-size:.7rem;color:#f06e27}.section-heading h2{font-size:1.65rem;margin-bottom:6px}.section-heading p{color:var(--muted);font-size:.9rem;max-width:760px;margin-bottom:0}.setup-layout{display:grid;grid-template-columns:.78fr 1.22fr;gap:22px;align-items:center}.node-panel{padding:17px 16px 26px;position:relative;overflow:hidden}.nodes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;position:relative;z-index:1}.node{border:1px solid #cbdcf3;border-radius:11px;background:linear-gradient(180deg,#fff,#f8fbff);padding:15px 10px 12px;text-align:center;min-width:0;box-shadow:0 4px 12px rgba(21,63,112,.04)}.node-icon{width:35px;height:35px;margin:0 auto 8px;border-radius:50%;display:grid;place-items:center;background:var(--node-bg,#e5efff);color:var(--node-color,#2563eb);font-size:1.05rem;font-weight:800}.node h3{font-size:.84rem;margin:0 0 1px;color:#12345c}.node .role{font-weight:700;font-size:.72rem;color:var(--node-color,#2563eb);margin-bottom:7px}.node p{font-size:.72rem;line-height:1.4;margin:0;color:#607b9b}.node:nth-child(2){--node-bg:#e1f9ff;--node-color:#0699b7;border-color:#b7e9f2}.node:nth-child(3){--node-bg:#e5f8e8;--node-color:#2f9d58;border-color:#c7e9cf}.node:nth-child(4){--node-bg:#fff0e1;--node-color:#e97616;border-color:#f8d5b4}.node:nth-child(5){--node-bg:#f2e6ff;--node-color:#9747d8;border-color:#e2ccfa}.bus-line{position:absolute;left:8%;right:8%;bottom:13px;border-bottom:2px dashed #9ab7df;height:18px}.bus-label{position:absolute;bottom:0;left:0;right:0;text-align:center;background:#fff;color:#59799e;font-size:.68rem;font-weight:700;width:max-content;margin:auto;padding:0 10px}
-.info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:30px}.info-card{padding:21px 20px;display:flex;flex-direction:column;min-height:260px}.card-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}.card-head .icon-bubble{flex-shrink:0;width:37px;height:37px;border-radius:11px;font-size:1.1rem}.card-head h3{font-size:1rem;line-height:1.25;margin:1px 0 4px}.card-head small{display:block;color:#6480a0;font-size:.75rem}.task{display:grid;grid-template-columns:34px 1fr;gap:10px;margin:0 0 14px}.task-number{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:#e8f0ff;color:#2864eb;font-weight:800;font-size:.8rem}.task h4{font-size:.83rem;margin:0 0 4px;font-family:Manrope}.task p{font-size:.78rem;line-height:1.45;margin:0}.checklist,.rules-list{list-style:none;padding:0;margin:0 0 12px}.checklist li,.rules-list li{position:relative;padding-left:22px;font-size:.79rem;color:#536d8c;line-height:1.45;margin-bottom:9px}.checklist li:before{content:"✓";position:absolute;left:0;top:0;color:#168de2;font-weight:800}.rules-list li:before{content:"✓";position:absolute;left:0;top:0;width:15px;height:15px;line-height:15px;text-align:center;background:#e7f2ff;color:#1e6ad4;border-radius:50%;font-size:.68rem;font-weight:800}.metric-row{display:grid;grid-template-columns:28px 1fr;gap:10px;margin-bottom:12px}.metric-icon{width:27px;height:27px;border-radius:50%;background:#fff0e5;color:#ed7627;display:grid;place-items:center;font-size:.85rem}.metric-row b{font-size:.79rem;display:block;margin-bottom:2px}.metric-row p{font-size:.74rem;line-height:1.35;margin:0}.mini-note{margin-top:auto;background:#edf5ff;border-radius:8px;padding:9px 10px;color:#4d719b;font-size:.7rem;line-height:1.4}
-.timeline{margin-top:18px;padding:18px 20px;display:grid;grid-template-columns:42px 1fr auto;gap:14px;align-items:center;background:linear-gradient(105deg,#fff,#edf8ff);border-color:#cfe8f8}.timeline .icon-bubble{background:#e1f2ff}.timeline h3{font-size:.95rem;margin:0 0 4px}.timeline p{font-size:.77rem;margin:0}.timeline-tag{max-width:220px;background:#e0f5ff;border:1px solid #c5e8f7;color:#3c7090;border-radius:8px;padding:9px 12px;font-size:.7rem}.cta{margin-top:16px;display:grid;grid-template-columns:50px 1fr auto;gap:17px;align-items:center;padding:23px 25px;border-radius:13px;color:white;background:radial-gradient(ellipse at 20% 100%,rgba(255,132,48,.35),transparent 45%),linear-gradient(105deg,#10213a,#a9471e);box-shadow:0 10px 24px rgba(15,43,78,.12)}.cta-icon{width:48px;height:48px;border:1px solid #ffffff55;border-radius:50%;display:grid;place-items:center;font-size:1.5rem}.cta h2{font-size:1.25rem;margin:0 0 4px}.cta p{font-size:.82rem;color:#f2e3dd;margin:0;max-width:650px}.cta-actions{display:flex;gap:8px;flex-wrap:wrap}.btn-primary{background:#ff7a22;color:white;box-shadow:0 5px 15px #ff7a2238}.btn-outline{border:1px solid #ffffff80;color:#fff;background:transparent}.site-footer{background:#09182b;color:#aebed3;padding:20px 0;font-size:.77rem}.footer-inner{display:flex;justify-content:space-between;gap:20px}.site-footer a{text-decoration:none;color:#d7e4f4}.site-footer span{color:#69c8ff}
-@media(max-width:1050px){.nav-links{gap:15px}.nav-links a{font-size:.8rem}.hero-grid{grid-template-columns:1fr  .8fr}.info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.setup-layout{grid-template-columns:1fr}.setup-layout .section-heading{max-width:800px}.node-panel{padding-bottom:30px}}
-@media(max-width:760px){.container{width:min(100% - 32px,600px)}.site-header{height:64px}.nav-links{display:none;position:absolute;top:64px;left:0;right:0;padding:18px 22px;background:#0b192d;border-top:1px solid #34445b;flex-direction:column;align-items:flex-start}.nav-links.open{display:flex}.nav-cta{margin-left:auto;padding:9px 12px;font-size:.78rem}.menu-toggle{display:block}.brand{font-size:.95rem}.hero{padding:50px 0 40px}.hero-grid{grid-template-columns:1fr;gap:25px}.hero h1{font-size:clamp(2.45rem,10vw,3.5rem)}.lead{font-size:1rem}.network{max-width:470px;justify-self:center}.intro-grid{grid-template-columns:1fr}.intro-card,.central-card{padding:22px}.section{padding-top:30px}.section-heading h2{font-size:1.45rem}.nodes{grid-template-columns:repeat(2,minmax(0,1fr))}.node:last-of-type{grid-column:1/-1;max-width:50%;justify-self:center;width:100%}.bus-line,.bus-label{display:none}.node-panel{padding:14px}.info-grid{grid-template-columns:1fr}.info-card{min-height:0}.timeline{grid-template-columns:38px 1fr}.timeline-tag{grid-column:2;max-width:none}.cta{grid-template-columns:42px 1fr;padding:21px}.cta-icon{width:40px;height:40px}.cta-actions{grid-column:1/-1}.footer-inner{flex-direction:column;gap:8px}}
-@media(min-width:761px) and (max-width:950px){.nav-links{gap:10px}.brand{font-size:.9rem}.nav-links a{font-size:.73rem}.network{min-width:0}.hero h1{font-size:3rem}.node{padding:12px 6px}.node p{font-size:.66rem}}
+:root{
+  --navy:#071a30;--navy2:#0c2947;--orange:#ff7417;--orange-dark:#b94b16;
+  --orange-pale:#fff2e7;--ink:#102f53;--body:#456582;--line:#ffd2ae;
+  --paper:#fffaf6;--white:#fff;--shadow:0 12px 30px rgba(13,42,70,.08)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7fafd;color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.5}
+a{color:inherit}
+.container{width:min(1420px,calc(100% - 48px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:var(--navy);border-bottom:1px solid #29425a;color:#fff}
+.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-size:19px;font-weight:800;text-decoration:none;white-space:nowrap}
+.brand span{color:var(--orange)}
+.navlinks{display:flex;align-items:center;gap:25px}
+.navlinks a{font-size:13px;font-weight:700;text-decoration:none;color:#f1f5fa}
+.navlinks a:hover{color:#ffad72}
+.btn{display:inline-flex;justify-content:center;align-items:center;padding:12px 18px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:800;border:1px solid transparent;cursor:pointer}
+.btn-orange{background:var(--orange);color:#fff}
+.btn-orange:hover{background:#ff8735}
+.btn-outline{border-color:#fff8;color:#fff;background:transparent}
+.hero{background:radial-gradient(circle at 77% 42%,#f8791728,transparent 26%),radial-gradient(circle at 88% 72%,#087be82a,transparent 30%),linear-gradient(112deg,#06172a,#0c2745 62%,#111e32);color:#fff;overflow:hidden}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:38px;min-height:355px;padding:42px 0}
+.pill{display:inline-block;background:var(--orange);border-radius:999px;color:#fff;padding:6px 12px;font-size:11px;font-weight:900;letter-spacing:.4px}
+.eyebrow{display:flex;align-items:center;gap:10px;margin:14px 0 10px;color:#ff8b3c;font-size:12px;letter-spacing:1.2px;font-weight:900}
+.eyebrow:before{content:"";width:22px;height:2px;background:var(--orange)}
+h1{font-size:clamp(38px,4.5vw,60px);line-height:1.02;letter-spacing:-1.6px;margin:0 0 14px;max-width:650px}
+.hero p{font-size:16px;color:#e3edf8;max-width:670px;margin:0 0 17px}
+.draft{display:inline-flex;align-items:center;flex-wrap:wrap;gap:8px;border:1px solid #ffffff4d;border-radius:11px;padding:9px 12px;background:#04122248;font-size:12px;color:#eaf2fb}
+.draft strong{color:#ff9b51}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+/* SVG is used so the agent nodes and connector endpoints remain aligned */
+.agent-diagram{width:100%;max-width:540px;justify-self:center}
+.agent-diagram svg{display:block;width:100%;height:auto;overflow:visible}
+.section{padding:22px 0}
+.overview{background:#fff;padding:22px 0 24px}
+.overview-grid{display:grid;grid-template-columns:1.45fr 1fr 1.08fr .92fr;gap:0;border:1px solid #ffe0c8;border-radius:14px;background:linear-gradient(100deg,#fff 0%,#fffaf6 100%);box-shadow:var(--shadow);overflow:hidden}
+.panel{padding:19px 18px;min-width:0}
+.panel+.panel{border-left:1px solid #ffd9bf}
+h2,h3,h4{line-height:1.2}
+h2{font-size:28px;letter-spacing:-.5px;margin:0 0 8px}
+h3{font-size:16px;margin:0 0 10px}
+h4{font-size:13px;margin:0 0 5px}
+p{margin-top:0}
+.muted{color:var(--body)}
+.small{font-size:12px}
+.orange-tag{display:inline-block;background:var(--orange);color:white;border-radius:999px;padding:5px 10px;font-size:10px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
+.note{display:flex;gap:9px;align-items:flex-start;background:#fff0e4;border:1px solid #ffd2ae;color:#74482c;border-radius:8px;padding:10px 11px;font-size:11px;margin-top:12px}
+.note-icon{display:grid;place-items:center;flex:0 0 24px;height:24px;border-radius:50%;background:var(--orange);color:#fff;font-weight:900}
+.question{background:#fff0e4;border:1px solid #ffe0c8;border-radius:9px;padding:14px;font-size:13px;color:#6c4428}
+.nodes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.node{background:#fff9f3;border:1px solid #ffd2ae;border-radius:8px;text-align:center;padding:8px 5px;font-size:11px;color:#315777}
+.router{grid-column:1/-1;justify-self:center;background:var(--orange);color:#fff;border-radius:7px;padding:8px 15px;font-weight:800;font-size:11px}
+.node.wide{grid-column:1/-1;justify-self:center;width:52%}
+.key{display:flex;gap:9px;margin:11px 0;font-size:11px;color:var(--body)}
+.num{flex:0 0 27px;height:27px;display:grid;place-items:center;background:#ffe6d4;color:var(--orange-dark);border-radius:50%;font-weight:900}
+.three-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:22px 0}
+.info-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:19px;box-shadow:var(--shadow)}
+.check{font-size:12px;color:var(--body);margin:8px 0}
+.check b{color:var(--orange-dark)}
+.cost-section{padding:0 0 20px;background:linear-gradient(#fff,#fff8f1)}
+.cost-panel{border:1px solid #ffc99f;border-radius:14px;background:linear-gradient(110deg,#fff1e5 0%,#fffaf6 60%,#fff0e4 100%);box-shadow:var(--shadow);padding:20px}
+.cost-grid{display:grid;grid-template-columns:1.6fr .95fr .95fr;gap:0}
+.cost-col{padding:0 22px;min-width:0}
+.cost-col:first-child{padding-left:0}
+.cost-col:last-child{padding-right:0}
+.cost-col+.cost-col{border-left:1px solid #ffcba8}
+.cost-title{font-size:30px;margin:0 0 5px}
+.lead{font-size:14px;color:#315777;margin-bottom:13px;max-width:600px}
+.task-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.task{background:#fff;border:1px solid #ffd2ae;border-radius:9px;padding:12px;min-width:0}
+.task-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:#ffe7d5;color:var(--orange-dark);font-size:17px;font-weight:900;margin-bottom:8px}
+.task p{font-size:11px;color:var(--body);margin:0}
+.how{display:flex;gap:10px;align-items:flex-start;margin:13px 0}
+.round{flex:0 0 38px;width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#fff;border:1px solid #ffc99f;color:var(--orange-dark);font-weight:900;font-size:16px}
+.how p{font-size:11px;color:var(--body);margin:0}
+.timeline{border:1px solid #ffd2ae;background:#ffffff8c;border-radius:9px;padding:12px;font-size:11px;color:#67472f}
+.timeline strong{color:var(--orange-dark)}
+.timeline .subnote{border:1px solid #ffdcc3;border-radius:7px;padding:9px;margin-top:9px;background:#fff8f2}
+.bottom-cta{padding:0 0 24px;background:#fff8f1}
+.cta{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:19px 24px;border-radius:13px;color:#fff;background:radial-gradient(circle at 75% 20%,#ff9b3838,transparent 27%),linear-gradient(105deg,#321e19,#963b19 62%,#c84e14);box-shadow:var(--shadow)}
+.cta-left{display:flex;align-items:center;gap:15px}
+.cta-icon{flex:0 0 48px;width:48px;height:48px;border:1px solid #ffb17a;border-radius:50%;display:grid;place-items:center;font-size:23px}
+.cta h3{margin:0 0 4px;font-size:17px}
+.cta p{margin:0;font-size:12px;color:#fff0e5}
+.cta-actions{display:flex;gap:10px;flex-shrink:0}
+footer{background:var(--navy);color:#d9e8f7;padding:17px 0;font-size:12px}
+.footer-inner{display:flex;justify-content:space-between;gap:12px}
+footer a{color:#ffb37c;text-decoration:none}
+@media(max-width:1100px){
+ .navlinks{gap:13px}.overview-grid{grid-template-columns:1fr 1fr}.panel+.panel{border-left:0}.panel:nth-child(even){border-left:1px solid #ffd9bf}.panel:nth-child(n+3){border-top:1px solid #ffd9bf}
+ .cost-grid{grid-template-columns:1.3fr 1fr}.cost-col:last-child{grid-column:1/-1;border-left:0;border-top:1px solid #ffcba8;margin-top:17px;padding:17px 0 0}.cost-col:nth-child(2){border-left:1px solid #ffcba8}
+}
+@media(max-width:760px){
+ .container{width:calc(100% - 28px)}.nav{padding:12px 0;align-items:flex-start;flex-direction:column;gap:10px}.navlinks{max-width:100%;overflow-x:auto;padding-bottom:4px}.navlinks a{white-space:nowrap;font-size:11px}.nav>.btn{display:none}
+ .hero-inner{grid-template-columns:1fr;padding:34px 0;gap:15px}.hero p{font-size:15px}.agent-diagram{max-width:440px}
+ .overview-grid,.three-cards,.cost-grid{grid-template-columns:1fr}.panel,.panel+.panel,.panel:nth-child(even){border-left:0;border-top:1px solid #ffd9bf}.panel:first-child{border-top:0}
+ .three-cards{gap:12px}.cost-col,.cost-col:first-child,.cost-col:last-child{padding:16px 0}.cost-col:first-child{padding-top:0}.cost-col+.cost-col,.cost-col:nth-child(2),.cost-col:last-child{border-left:0;border-top:1px solid #ffcba8;margin-top:12px}
+ .task-grid{grid-template-columns:1fr}.task{display:grid;grid-template-columns:38px 1fr;column-gap:10px;align-items:center}.task-icon{grid-row:1/3;margin:0}.task h4{margin:0}.task p{grid-column:2}
+ .cta{align-items:flex-start;flex-direction:column}.cta-actions{flex-wrap:wrap}.footer-inner{flex-direction:column}
+}
 </style>
 </head>
 <body>
-<header class="site-header"><div class="container nav"><a class="brand" href="index.html">Agentic AI <span>Grand Challenges</span></a><nav class="nav-links" id="navLinks"><a href="index.html#why">Why This Programme</a><a href="index.html#challenges">Challenges</a><a href="index.html#outcomes">Outcomes</a><a href="index.html#partners">Partners</a><a href="committees.html">Committees</a></nav><a class="nav-cta" href="index.html#interest">Express Interest</a><button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button></div></header>
-<section class="hero"><div class="container hero-grid"><div><span class="pill">CHALLENGE 02</span><p class="eyebrow">Frugal Agentic AI</p><h1>The Frugal Agentic AI Challenge</h1><p class="lead">Can a team of cooperating AI agents deliver useful answers while minimising energy consumption and communication on a small network of low-power computers?</p><div class="draft-chip"><span class="draft-dot"></span><span><b>Draft specification v0.1</b> &nbsp;|&nbsp; Subject to review by the challenge chairs</span></div></div>
-<div class="network" aria-label="Diagram of an orchestrator coordinating four agent nodes"><svg viewBox="0 0 560 360" role="img" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="glow"><stop stop-color="#1a70bb" stop-opacity=".34"/><stop offset="1" stop-color="#07172b" stop-opacity="0"/></radialGradient><linearGradient id="hub" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#41658a"/><stop offset="1" stop-color="#142b49"/></linearGradient><filter id="blur"><feGaussianBlur stdDeviation="13"/></filter></defs><ellipse cx="280" cy="180" rx="220" ry="170" fill="url(#glow)"/><g fill="none" stroke-width="2.5" stroke-dasharray="5 6"><path d="M280 120V157" stroke="#26a6ff"/><path d="M205 177L247 190" stroke="#10b9e8"/><path d="M354 177L312 190" stroke="#70d642"/><path d="M218 258L256 218" stroke="#ff941f"/><path d="M343 258L305 218" stroke="#c15bff"/></g><g><circle cx="280" cy="66" r="54" fill="#147be6" opacity=".14" filter="url(#blur)"/><circle cx="280" cy="66" r="52" fill="#0c2442" stroke="#258fff" stroke-width="2"/><rect x="266" y="34" width="28" height="23" rx="4" fill="#163e68" stroke="#6bbdff"/><path d="M272 41h16M272 47h16M272 53h16" stroke="#7bd1ff" stroke-width="2"/><text x="280" y="78" text-anchor="middle" fill="#fff" font-size="12" font-family="Manrope" font-weight="700" textLength="82" lengthAdjust="spacingAndGlyphs">Orchestrator</text></g><g><circle cx="126" cy="151" r="46" fill="#0b2b4a" stroke="#10b9e8" stroke-width="2"/><circle cx="126" cy="137" r="10" fill="none" stroke="#4ad8ff" stroke-width="3"/><path d="M110 153q16-23 32 0" fill="none" stroke="#4ad8ff" stroke-width="3"/><text x="126" y="174" text-anchor="middle" fill="#fff" font-size="14" font-family="Manrope" font-weight="800">Agent 1</text></g><g><circle cx="435" cy="151" r="46" fill="#162f27" stroke="#76d83f" stroke-width="2"/><rect x="421" y="127" width="28" height="22" rx="4" fill="#5aab32"/><path d="M426 122v-5m9 5v-5m9 5v-5m-18 33v-5m9 5v-5m9 5v-5" stroke="#9af16a" stroke-width="2"/><text x="435" y="174" text-anchor="middle" fill="#fff" font-size="14" font-family="Manrope" font-weight="800">Agent 2</text></g><g><circle cx="196" cy="277" r="46" fill="#3b2819" stroke="#ff941f" stroke-width="2"/><circle cx="196" cy="261" r="12" fill="none" stroke="#ffb65b" stroke-width="3"/><path d="M196 245v32m-16-16h32m-27-11 22 22m0-22-22 22" stroke="#ffb65b" stroke-width="2"/><text x="196" y="299" text-anchor="middle" fill="#fff" font-size="14" font-family="Manrope" font-weight="800">Agent 3</text></g><g><circle cx="364" cy="277" r="46" fill="#2d1c45" stroke="#c15bff" stroke-width="2"/><path d="M364 246c-9-9-18 0-15 10-8 7-4 19 4 20l11-8 11 8c8-1 12-13 4-20 3-10-6-19-15-10z" fill="#a746df"/><path d="M364 246v31m-8-22 5 4m11-4-5 4m-12 9 6-3m9 3-6-3" stroke="#f0c8ff" stroke-width="2"/><text x="364" y="299" text-anchor="middle" fill="#fff" font-size="14" font-family="Manrope" font-weight="800">Agent 4</text></g><g><path d="M250 188l30-17 30 17-30 17z" fill="#597c9f" stroke="#94b7da"/><path d="M250 188v23l30 18v-24z" fill="#284666" stroke="#7697ba"/><path d="M310 188v23l-30 18v-24z" fill="url(#hub)" stroke="#7697ba"/><path d="M262 190l18-10 18 10-18 11z" fill="#8caac7" opacity=".8"/><circle cx="266" cy="210" r="2" fill="#8bd6ff"/><circle cx="276" cy="216" r="2" fill="#8bd6ff"/><circle cx="290" cy="209" r="2" fill="#8bd6ff"/></g></svg></div></div><div class="hero-bottom"></div></section>
-<main><div class="container"><div class="intro-grid"><article class="panel intro-card"><div class="icon-bubble">◎</div><div><h2>What is this challenge?</h2><p>The challenge investigates multi-agent systems running on a common, resource-constrained platform. Teams design their own agent harnesses, including roles, prompts, routing, coordination, memory and validation, to operate effectively within the defined constraints.</p><p>The reference setup uses five low-power nodes (e.g. Raspberry Pi 5), with model weights selected by the organisers and an isolated network.</p><div class="note"><strong>ⓘ</strong><span>The challenge specification is currently a draft and the proposed setup, models and evaluation rules are subject to review.</span></div></div></article><article class="panel central-card"><div class="central-inner"><div class="icon-bubble">♧</div><div><h2>The central question</h2><p>How much useful capability can a coordinated, resource-efficient multi-agent system retain while reducing energy and compute requirements?</p></div></div></article></div>
-<section class="section"><div class="setup-layout"><div class="section-heading"><p class="eyebrow">Reference setup</p><h2>Five nodes, one common platform</h2><p>The proposed setup uses five low-power computing nodes connected through an isolated network. Each node runs a model selected and installed by the organisers. Teams design their own agent harnesses, including roles, prompts, routing, coordination and memory.</p></div><div class="panel node-panel"><div class="nodes"><article class="node"><div class="node-icon">▤</div><h3>Orchestrator</h3><p>Coordinates the agents and returns the final response.</p></article><article class="node"><div class="node-icon">♙</div><h3>Agent 1</h3><div class="role"></div><p>Handles delegated work (e.g. draft, answer, review).</p></article><article class="node"><div class="node-icon">♙</div><h3>Agent 2</h3><div class="role"></div><p>Handles delegated work (e.g. draft, answer, review).</p></article><article class="node"><div class="node-icon">⚙</div><h3>Agent 3</h3><div class="role"></div><p>Handles delegated work (e.g. draft, answer, review).</p></article><article class="node"><div class="node-icon">✺</div><h3>Agent 4</h3><div class="role"></div><p>Handles delegated work (e.g. draft, answer, review).</p></article></div><div class="bus-line"></div><div class="bus-label">Isolated network · all inter-agent messages via official message bus</div></div></div></section>
-<div class="info-grid"><article class="panel info-card"><div class="card-head"><div class="icon-bubble">▤</div><div><h3>Tasks</h3><small>Two proposed tasks</small></div></div><div class="task"><div class="task-number">01</div><div><h4>Single query</h4><p>Answer independent prompts, such as questions about passages, summaries and drafting tasks.</p></div></div><div class="task"><div class="task-number">02</div><div><h4>Multi-turn conversation</h4><p>Handle a scripted conversation with evolving requirements and retain relevant context.</p></div></div><div class="mini-note">Task details, example prompts and constraints remain subject to review.</div></article>
-<article class="panel info-card"><div class="card-head"><div class="icon-bubble">⇧</div><div><h3>Submission requirements</h3><small>What teams will submit</small></div></div><ul class="checklist"><li>Setup code for the orchestrator and four agents</li><li>Connection self-test</li><li>Orchestrator implementing the challenge API</li><li>Configuration (roles, prompts, routing, memory)</li><li>Method description (maximum 2 pages)</li></ul><div class="mini-note">Model weights are provided by the organisers. Packaging, dependencies and size limits are TBD.</div></article>
-<article class="panel info-card"><div class="card-head"><div class="icon-bubble">▥</div><div><h3>Evaluation</h3><small>What will be measured (proposed)</small></div></div><div class="metric-row"><div class="metric-icon">ϟ</div><div><b>Energy consumption</b><p>Total system energy, including nodes and switch.</p></div></div><div class="metric-row"><div class="metric-icon">↔</div><div><b>Inter-agent communication</b><p>Messages delivered and data transferred.</p></div></div><div class="metric-row"><div class="metric-icon">★</div><div><b>Answer quality</b><p>Useful responses, with a proposed minimum threshold.</p></div></div><div class="metric-row"><div class="metric-icon">◷</div><div><b>Response time and behaviour</b><p>Latency, idle power and token usage.</p></div></div><div class="mini-note">Scoring, thresholds and measurement settings need committee agreement.</div></article>
-</div>
-<section class="cta"><div class="cta-icon">♧</div><div><h2>Interested in Challenge 02?</h2><p>Register your interest to receive updates as the challenge specification and participation details are finalised.</p></div><div class="cta-actions"><a class="btn btn-primary" href="index.html#interest">Express Interest</a><a class="btn btn-outline" href="index.html#challenges">Back to Challenges</a></div></section></div></main>
-<footer class="site-footer"><div class="container footer-inner"><div>Agentic AI <span>Grand Challenges</span> &nbsp;—&nbsp; University of Southampton</div><a href="index.html">Back to homepage →</a></div></footer>
-<script>const toggle=document.getElementById('menuToggle');const links=document.getElementById('navLinks');toggle.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'✕':'☰'});</script>
-</body></html>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#top">Agentic AI <span>Grand Challenges</span></a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="#why">Why This Programme</a><a href="#challenge">Challenges</a><a href="#outcomes">Outcomes</a><a href="#partners">Partners</a><a href="#committees">Committees</a>
+    </nav>
+    <a class="btn btn-orange" href="#interest">Express Interest</a>
+  </div>
+</header>
+<main id="top">
+<section class="hero" id="challenge">
+  <div class="container hero-inner">
+    <div>
+      <span class="pill">Challenge 02</span>
+      <div class="eyebrow">Frugal Agentic AI</div>
+      <h1>The Frugal Agentic AI Challenge</h1>
+      <p>Can a team of cooperating AI agents deliver useful answers while minimising energy consumption and communication on a small network of low-power computers?</p>
+      <div class="draft"><span class="dot"></span><strong>Draft specification v0.1</strong><span>|</span> Subject to review by the challenge chairs</div>
+    </div>
+    <div class="agent-diagram">
+      <svg viewBox="0 0 520 320" role="img" aria-label="Orchestrator coordinating four agents around a central network node">
+        <defs>
+          <radialGradient id="glow"><stop offset="0" stop-color="#2776b5" stop-opacity=".24"/><stop offset="1" stop-color="#2776b5" stop-opacity="0"/></radialGradient>
+          <linearGradient id="core" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#8bd8ff"/><stop offset="1" stop-color="#346a9b"/></linearGradient>
+        </defs>
+        <circle cx="260" cy="164" r="150" fill="url(#glow)"/>
+        <circle cx="260" cy="164" r="104" fill="none" stroke="#5e9ac4" stroke-opacity=".22"/>
+        <!-- All connector endpoints meet the edge of the central node or each agent circle. -->
+        <g fill="none" stroke-width="2.2" stroke-dasharray="5 5">
+          <path d="M260 88 L260 143" stroke="#159dff"/>
+          <path d="M184 150 L231 164" stroke="#00d7ef"/>
+          <path d="M336 150 L289 164" stroke="#75df36"/>
+          <path d="M214 220 L244 185" stroke="#ff9c28"/>
+          <path d="M306 220 L276 185" stroke="#d15aff"/>
+        </g>
+        <g font-family="Segoe UI,Arial,sans-serif" text-anchor="middle">
+          <g>
+            <circle cx="260" cy="54" r="43" fill="#0c2947" stroke="#159dff" stroke-width="2"/>
+            <text x="260" y="45" font-size="23" fill="#159dff">▤</text>
+            <text x="260" y="67" font-size="12" font-weight="700" fill="#fff">Orchestrator</text>
+          </g>
+          <g>
+            <circle cx="138" cy="145" r="41" fill="#0c2947" stroke="#00d7ef" stroke-width="2"/>
+            <text x="138" y="139" font-size="22" fill="#00d7ef">♙</text><text x="138" y="160" font-size="12" font-weight="700" fill="#fff">Agent 1</text>
+          </g>
+          <g>
+            <circle cx="382" cy="145" r="41" fill="#0c2947" stroke="#75df36" stroke-width="2"/>
+            <text x="382" y="139" font-size="22" fill="#75df36">▥</text><text x="382" y="160" font-size="12" font-weight="700" fill="#fff">Agent 2</text>
+          </g>
+          <g>
+            <circle cx="205" cy="246" r="41" fill="#0c2947" stroke="#ff9c28" stroke-width="2"/>
+            <text x="205" y="240" font-size="22" fill="#ff9c28">⚙</text><text x="205" y="261" font-size="12" font-weight="700" fill="#fff">Agent 3</text>
+          </g>
+          <g>
+            <circle cx="315" cy="246" r="41" fill="#0c2947" stroke="#d15aff" stroke-width="2"/>
+            <text x="315" y="240" font-size="22" fill="#d15aff">✿</text><text x="315" y="261" font-size="12" font-weight="700" fill="#fff">Agent 4</text>
+          </g>
+        </g>
+        <polygon points="260,143 281,164 260,185 239,164" fill="url(#core)" stroke="#b9e7ff" stroke-width="1.5"/>
+        <polygon points="260,151 273,164 260,177 247,164" fill="#b8e6ff" opacity=".58"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="overview" id="why">
+ <div class="container overview-grid">
+  <article class="panel">
+    <span class="orange-tag">Part A</span><h3>Resource-efficient multi-agent systems</h3>
+    <p class="muted small">The challenge explores how to build agent systems that can deliver useful and reliable results while operating efficiently on a small network of low-power devices. The focus is on minimising energy consumption and communication overhead, without compromising output quality.</p>
+    <div class="note"><span class="note-icon">♧</span><span>This challenge uses five low-power nodes (e.g. Raspberry Pi 5), with model weights selected by the organisers and an isolated network.</span></div>
+  </article>
+  <article class="panel">
+    <h3>◉ &nbsp; The central question</h3>
+    <div class="question">How can AI agents complete useful tasks while minimising energy and communication on a small network of low-power computers?</div>
+  </article>
+  <article class="panel">
+    <h3>The low-power network</h3>
+    <div class="nodes">
+      <div class="node">▦ &nbsp; Node 1 (LLM)</div><div class="node">▦ &nbsp; Node 2 (LLM)</div>
+      <div class="router">Router / Coordinator</div>
+      <div class="node">▦ &nbsp; Node 3 (LLM)</div><div class="node">▦ &nbsp; Node 4 (LLM)</div>
+      <div class="node wide">▦ &nbsp; Node 5 (LLM)</div>
+    </div>
+  </article>
+  <article class="panel">
+    <h3>Key tasks</h3>
+    <div class="key"><span class="num">1</span><span>Design and implement agent systems that run efficiently on low-power devices.</span></div>
+    <div class="key"><span class="num">2</span><span>Minimise energy usage and communication overhead.</span></div>
+    <div class="key"><span class="num">3</span><span>Deliver useful, reliable outputs across a range of tasks.</span></div>
+  </article>
+ </div>
+</section>
+
+<section class="section">
+ <div class="container three-cards">
+  <article class="info-card">
+    <h3>Tasks</h3><p class="muted small">Two proposed tasks</p>
+    <h4>01 &nbsp; Single query</h4><p class="muted small">Answer independent prompts, such as questions about passages, summaries and drafting tasks.</p>
+    <h4>02 &nbsp; Multi-turn conversation</h4><p class="muted small">Handle a scripted conversation with evolving requirements and retain relevant context.</p>
+    <div class="note">Task details, example prompts and constraints remain subject to review.</div>
+  </article>
+  <article class="info-card">
+    <h3>Submission requirements</h3><p class="muted small">What teams will submit</p>
+    <p class="check"><b>✓</b> Setup code for the orchestrator and four agents</p>
+    <p class="check"><b>✓</b> Connection self-test</p>
+    <p class="check"><b>✓</b> Orchestrator implementing the challenge API</p>
+    <p class="check"><b>✓</b> Configuration (roles, prompts, routing, memory)</p>
+    <p class="check"><b>✓</b> Method description (maximum 2 pages)</p>
+    <div class="note">Model weights are provided by the organisers. Packaging, dependencies and size limits are TBD.</div>
+  </article>
+  <article class="info-card">
+    <h3>Evaluation</h3><p class="muted small">What will be measured (proposed)</p>
+    <h4>Energy consumption</h4><p class="muted small">Total system energy, including nodes and switch.</p>
+    <h4>Inter-agent communication</h4><p class="muted small">Messages delivered and data transferred.</p>
+    <h4>Answer quality</h4><p class="muted small">Useful responses, with a proposed minimum threshold.</p>
+    <h4>Response time and behaviour</h4><p class="muted small">Latency, idle power and token usage.</p>
+    <div class="note">Scoring, thresholds and measurement settings need committee agreement.</div>
+  </article>
+ </div>
+</section>
+
+<section class="cost-section" id="cost-aware">
+ <div class="container">
+  <div class="cost-panel">
+   <div class="cost-grid">
+    <div class="cost-col">
+     <span class="orange-tag">Sub-challenge</span>
+     <h2 class="cost-title">Cost-Aware Agentic AI</h2>
+     <p class="lead">How can AI agents complete useful business workflows at lower execution cost while maintaining quality and reliability?</p>
+     <h3>Proposed task families</h3>
+     <div class="task-grid">
+      <article class="task"><div class="task-icon">&lt;/&gt;</div><h4>Coding</h4><p>Fix defects, build features and work with code repositories.</p></article>
+      <article class="task"><div class="task-icon">▦</div><h4>Documents &amp; spreadsheets</h4><p>Analyse records, create reports and work with structured data.</p></article>
+      <article class="task"><div class="task-icon">⌕</div><h4>Evidence gathering</h4><p>Answer questions using reliable and traceable sources.</p></article>
+     </div>
+     <div class="note"><span class="note-icon">i</span><span>This track measures API and paid-tool expenditure. It does not establish total ownership cost, energy use or carbon savings; those are outside the initial track.</span></div>
+    </div>
+    <div class="cost-col">
+     <h3>How it works</h3>
+     <div class="how"><div class="round">▤</div><p>Agent systems complete predefined business workflows, including coding, document work and evidence gathering.</p></div>
+     <div class="how"><div class="round">£</div><p>Execution cost is measured through API usage and paid-tool expenditure.</p></div>
+     <div class="how"><div class="round">✓</div><p>Cost comparisons apply to systems that meet the required quality standard.</p></div>
+     <div class="how"><div class="round">↻</div><p>Proposed outputs include a validated benchmark, reference implementations and independently rerun results.</p></div>
+    </div>
+    <div class="cost-col">
+     <h3>Proposed timeline &amp; status</h3>
+     <div class="timeline"><strong>March 2027 — proposed</strong><p style="margin:5px 0 0">Validated benchmark and baseline demonstration.</p><div class="subnote">A ranked competition will proceed only if evaluation infrastructure, task set, funding and entrant timetable are ready.</div></div>
+     <div class="note"><span class="note-icon">!</span><span><strong>Important distinction:</strong> This sub-challenge measures execution expenditure, not energy or carbon. Exact rules, thresholds, funding and other numerical limits require steering agreement before publication.</span></div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="bottom-cta" id="interest">
+ <div class="container">
+  <div class="cta">
+   <div class="cta-left"><div class="cta-icon">♧</div><div><h3>Interested in Challenge 02?</h3><p>Register your interest to receive updates as the challenge specification and participation details are finalised.</p></div></div>
+   <div class="cta-actions">
+    <!-- Replace this placeholder link with the actual registration form URL. -->
+    <a class="btn btn-orange" href="#interest">Express Interest →</a>
+    <a class="btn btn-outline" href="#challenge">Back to Challenges →</a>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+<footer id="outcomes">
+ <div class="container footer-inner"><span>Agentic AI Grand Challenges &nbsp;—&nbsp; University of Southampton</span><span><a href="#top">Back to homepage →</a></span></div>
+</footer>
+</body>
+</html>
