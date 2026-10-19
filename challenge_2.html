@@ -22,6 +22,18 @@ header{position:sticky;top:0;z-index:20;background:var(--navy);border-bottom:1px
 .navlinks{display:flex;align-items:center;gap:25px}
 .navlinks a{font-size:13px;font-weight:700;text-decoration:none;color:#f1f5fa}
 .navlinks a:hover{color:#ffad72}
+
+/* Header layout fix: brand, navigation and CTA occupy separate flex items. */
+.navlinks{display:flex;align-items:center;justify-content:center;gap:clamp(12px,1.8vw,25px);flex:1;min-width:0}
+.navlinks a{white-space:nowrap;text-decoration:none}
+.nav-cta{flex-shrink:0}
+@media(max-width:900px){
+  .nav{gap:14px}
+  .brand{font-size:17px}
+  .navlinks{gap:11px}
+  .navlinks a{font-size:12px}
+}
+
 .btn{display:inline-flex;justify-content:center;align-items:center;padding:12px 18px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:800;border:1px solid transparent;cursor:pointer}
 .btn-orange{background:var(--orange);color:#fff}
 .btn-orange:hover{background:#ff8735}
@@ -99,7 +111,7 @@ footer a{color:#ffb37c;text-decoration:none}
  .cost-grid{grid-template-columns:1.3fr 1fr}.cost-col:last-child{grid-column:1/-1;border-left:0;border-top:1px solid #ffcba8;margin-top:17px;padding:17px 0 0}.cost-col:nth-child(2){border-left:1px solid #ffcba8}
 }
 @media(max-width:760px){
- .container{width:calc(100% - 28px)}.nav{padding:12px 0;align-items:flex-start;flex-direction:column;gap:10px}.navlinks{max-width:100%;overflow-x:auto;padding-bottom:4px}.navlinks a{white-space:nowrap;font-size:11px}.nav>.btn{display:none}
+ .container{width:calc(100% - 28px)}.nav{padding:12px 0;align-items:flex-start;flex-direction:column;gap:10px}.navlinks{width:100%;max-width:100%;overflow-x:auto;justify-content:flex-start;padding-bottom:4px;flex:none}.navlinks a{white-space:nowrap;font-size:11px}.nav-cta{display:inline-flex}
  .hero-inner{grid-template-columns:1fr;padding:34px 0;gap:15px}.hero p{font-size:15px}.agent-diagram{max-width:440px}
  .overview-grid,.three-cards,.cost-grid{grid-template-columns:1fr}.panel,.panel+.panel,.panel:nth-child(even){border-left:0;border-top:1px solid #ffd9bf}.panel:first-child{border-top:0}
  .three-cards{gap:12px}.cost-col,.cost-col:first-child,.cost-col:last-child{padding:16px 0}.cost-col:first-child{padding-top:0}.cost-col+.cost-col,.cost-col:nth-child(2),.cost-col:last-child{border-left:0;border-top:1px solid #ffcba8;margin-top:12px}
@@ -111,15 +123,19 @@ footer a{color:#ffb37c;text-decoration:none}
 <body>
 <header>
   <div class="container nav">
-    <a class="brand" href="#top">Agentic AI <span>Grand Challenges</span></a>
+    <a class="brand" href="index.html">Agentic AI <span>Grand Challenges</span></a>
     <nav class="navlinks" aria-label="Main navigation">
-      <a href="#why">Why This Programme</a><a href="#challenge">Challenges</a><a href="#outcomes">Outcomes</a><a href="#partners">Partners</a><a href="#committees">Committees</a>
+      <a href="index.html#why">Why This Programme</a>
+      <a href="index.html#challenges">Challenges</a>
+      <a href="index.html#outcomes">Outcomes</a>
+      <a href="index.html#partners">Partners</a>
+      <a href="index.html#committees">Committees</a>
     </nav>
-    <a class="btn btn-orange" href="#interest">Express Interest</a>
+    <a class="btn btn-orange nav-cta" href="index.html#interest">Express Interest</a>
   </div>
 </header>
 <main id="top">
-<section class="hero" id="challenge">
+<section class="hero" id="challenges">
   <div class="container hero-inner">
     <div>
       <span class="pill">Challenge 02</span>
@@ -270,15 +286,15 @@ footer a{color:#ffb37c;text-decoration:none}
    <div class="cta-left"><div class="cta-icon">♧</div><div><h3>Interested in Challenge 02?</h3><p>Register your interest to receive updates as the challenge specification and participation details are finalised.</p></div></div>
    <div class="cta-actions">
     <!-- Replace this placeholder link with the actual registration form URL. -->
-    <a class="btn btn-orange" href="#interest">Express Interest →</a>
-    <a class="btn btn-outline" href="#challenge">Back to Challenges →</a>
+    <a class="btn btn-orange" href="index.html#interest">Express Interest →</a>
+    <a class="btn btn-outline" href="index.html#challenges">Back to Challenges →</a>
    </div>
   </div>
  </div>
 </section>
 </main>
 <footer id="outcomes">
- <div class="container footer-inner"><span>Agentic AI Grand Challenges &nbsp;—&nbsp; University of Southampton</span><span><a href="#top">Back to homepage →</a></span></div>
+ <div class="container footer-inner"><span>Agentic AI Grand Challenges &nbsp;—&nbsp; University of Southampton</span><span><a href="index.html">Back to homepage →</a></span></div>
 </footer>
 </body>
 </html>
